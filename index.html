@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>8. Sınıf LGS Matematik Oyun Portalı | EBOB-EKOK & Asal Çarpanlar</title>
+  <title>8. Sınıf LGS Matematik Oyun Portalı | Çarpanlar, Katlar & Asal Sayılar</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -33,7 +33,7 @@
       border: 2px solid rgba(0, 240, 255, 0.35);
     }
     .glow-cyan-card:hover {
-      box-shadow: 0 15px 50px -5px rgba(0, 240, 255, 0.4), 0 0 30px rgba(0, 240, 255, 0.25);
+      box-shadow: 0 15px 50px -5px rgba(0, 240, 255, 0.45), 0 0 30px rgba(0, 240, 255, 0.25);
       border-color: #00f0ff;
     }
 
@@ -44,6 +44,15 @@
     .glow-pink-card:hover {
       box-shadow: 0 15px 50px -5px rgba(236, 72, 153, 0.5), 0 0 30px rgba(236, 72, 153, 0.3);
       border-color: #ec4899;
+    }
+
+    .glow-emerald-card {
+      box-shadow: 0 10px 40px -10px rgba(16, 185, 129, 0.3), 0 0 20px rgba(16, 185, 129, 0.15);
+      border: 2px solid rgba(16, 185, 129, 0.4);
+    }
+    .glow-emerald-card:hover {
+      box-shadow: 0 15px 50px -5px rgba(16, 185, 129, 0.5), 0 0 30px rgba(16, 185, 129, 0.3);
+      border-color: #10b981;
     }
 
     .smart-btn {
@@ -59,107 +68,134 @@
 <body class="flex flex-col justify-between p-4 sm:p-6 min-h-screen">
   
   <!-- Header -->
-  <header class="max-w-5xl mx-auto w-full text-center pt-4 pb-6">
+  <header class="max-w-6xl mx-auto w-full text-center pt-2 pb-6">
     <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 text-slate-300 text-xs sm:text-sm font-semibold mb-3 shadow-lg">
       <span>✨ 8. SINIF LGS MATEMATİK EĞİTİM MERKEZİ</span>
     </div>
-    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-pink-400 to-amber-300 mb-2">
+    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-cyan-400 to-pink-400 mb-2">
       MATEMATİK OYUNLARI PORTALI
     </h1>
-    <p class="text-slate-400 max-w-xl mx-auto text-sm sm:text-base">
-      Asal Çarpanlar, EBOB ve EKOK konularını eğlenerek öğrenmek için dilediğin macerayı seç!
+    <p class="text-slate-400 max-w-2xl mx-auto text-xs sm:text-base">
+      Her seviyeye uygun kademeli oyunlar: Çarpanlar ve Katlar, Asal Sayılar, EBOB & EKOK ve LGS Yeni Nesil soruları keşfet!
     </p>
   </header>
 
-  <!-- Game Cards Container -->
-  <main class="max-w-5xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-6 my-auto items-stretch">
+  <!-- 3 Game Cards Grid -->
+  <main class="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-3 gap-5 my-auto items-stretch">
     
-    <!-- GAME 1: SAYI AVCISI (Cyberpunk / Dark Space) -->
-    <div class="relative bg-slate-900/90 rounded-3xl p-6 sm:p-8 flex flex-col justify-between glow-cyan-card backdrop-blur-xl transition-all group overflow-hidden">
-      <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <!-- GAME 3: ASAL DEDEKTİF (Kademeli Öğrenme & Çarpanlar - Öne Çıkan Yeni Oyun) -->
+    <div class="relative bg-slate-900/95 rounded-3xl p-6 flex flex-col justify-between glow-emerald-card backdrop-blur-xl transition-all group overflow-hidden">
+      <div class="absolute top-0 right-0 w-28 h-28 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
       <div>
-        <!-- Badge -->
-        <div class="flex items-center justify-between mb-4">
-          <span class="px-3.5 py-1 bg-cyan-950/80 text-cyan-300 text-xs font-orbitron font-bold rounded-xl border border-cyan-500/40">
-            SİBER UZAY TEMASI
+        <div class="flex items-center justify-between mb-3">
+          <span class="px-3 py-1 bg-emerald-950 text-emerald-300 text-xs font-fredoka font-bold rounded-xl border border-emerald-500/40">
+            KADEMELİ DEDEKTİF
           </span>
-          <span class="text-3xl">🚀</span>
+          <span class="text-2xl">🔎</span>
         </div>
 
-        <!-- Title -->
-        <h2 class="text-2xl sm:text-3xl font-extrabold font-orbitron text-white mb-2 tracking-wide group-hover:text-cyan-400 transition-colors">
-          SAYI AVCISI: ASAL KAÇIŞ
+        <h2 class="text-xl sm:text-2xl font-extrabold font-fredoka text-white mb-2 tracking-wide group-hover:text-emerald-400 transition-colors">
+          ASAL DEDEKTİF
         </h2>
-        <p class="text-slate-300 text-sm leading-relaxed mb-6 font-medium">
-          Asal reaktörleri parçalayarak uzay gemisini dengede tut, EBOB ve EKOK stratejilerine karar ver ve LGS Yeni Nesil beceri temelli görevleri çöz!
+        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
+          Gökkuşağı çarpan avı, 91 ve 51 tuzak sayıları, aralarında asallık kuralları ve LGS şampiyonluk görevleri!
         </p>
 
-        <!-- Feature List -->
-        <div class="space-y-2 mb-8 text-xs sm:text-sm text-slate-300 font-medium">
-          <div class="flex items-center gap-2 p-2 bg-slate-950/60 rounded-xl border border-slate-800">
-            <span class="text-cyan-400 font-bold">1. Seviye:</span>
-            <span>Asal Çekirdek & Bölme Algoritması</span>
+        <div class="space-y-1.5 mb-6 text-xs text-slate-300 font-medium">
+          <div class="p-2 bg-slate-950/60 rounded-xl border border-slate-800 flex items-center gap-2">
+            <span class="text-emerald-400 font-bold">1. Seviye:</span> Gökkuşağı Çarpan Avcısı
           </div>
-          <div class="flex items-center gap-2 p-2 bg-slate-950/60 rounded-xl border border-slate-800">
-            <span class="text-purple-400 font-bold">2. Seviye:</span>
-            <span>EBOB mu EKOK mu? Strateji Kararı</span>
+          <div class="p-2 bg-slate-950/60 rounded-xl border border-slate-800 flex items-center gap-2">
+            <span class="text-amber-400 font-bold">2. Seviye:</span> Asal Kalkan & 91 Tuzağı
           </div>
-          <div class="flex items-center gap-2 p-2 bg-slate-950/60 rounded-xl border border-slate-800">
-            <span class="text-amber-400 font-bold">3. Seviye:</span>
-            <span>LGS Yeni Nesil Çark & Zemin Görevleri</span>
+          <div class="p-2 bg-slate-950/60 rounded-xl border border-slate-800 flex items-center gap-2">
+            <span class="text-purple-400 font-bold">3. Seviye:</span> Aralarında Asallık Testi
+          </div>
+          <div class="p-2 bg-slate-950/60 rounded-xl border border-slate-800 flex items-center gap-2">
+            <span class="text-cyan-400 font-bold">4. Seviye:</span> LGS Şampiyonluk Görevleri
           </div>
         </div>
       </div>
 
-      <!-- Play Button -->
-      <a href="sayi-avcisi/index.html" class="smart-btn w-full py-4 bg-gradient-to-r from-cyan-500 via-cyan-400 to-emerald-400 text-slate-950 font-orbitron font-black text-base sm:text-lg rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/25 hover:brightness-110">
-        <span>SAYI AVCISI'NI OYNA</span>
+      <a href="asal-dedektif/index.html" class="smart-btn w-full py-3.5 bg-gradient-to-r from-emerald-500 to-cyan-400 text-slate-950 font-fredoka font-extrabold text-base rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/25 hover:brightness-110">
+        <span>DEDEKTİFİ BAŞLAT</span>
+        <span>➔</span>
+      </a>
+    </div>
+
+    <!-- GAME 1: SAYI AVCISI (Cyberpunk / Dark Space) -->
+    <div class="relative bg-slate-900/95 rounded-3xl p-6 flex flex-col justify-between glow-cyan-card backdrop-blur-xl transition-all group overflow-hidden">
+      <div class="absolute top-0 right-0 w-28 h-28 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div>
+        <div class="flex items-center justify-between mb-3">
+          <span class="px-3 py-1 bg-cyan-950 text-cyan-300 text-xs font-orbitron font-bold rounded-xl border border-cyan-500/40">
+            SİBER UZAY
+          </span>
+          <span class="text-2xl">🚀</span>
+        </div>
+
+        <h2 class="text-xl sm:text-2xl font-extrabold font-orbitron text-white mb-2 tracking-wide group-hover:text-cyan-400 transition-colors">
+          SAYI AVCISI
+        </h2>
+        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
+          Asal reaktörleri parçalayarak gemiyi dengede tut, EBOB/EKOK stratejilerini seç ve yeni nesil bulmacaları çöz!
+        </p>
+
+        <div class="space-y-1.5 mb-6 text-xs text-slate-300 font-medium">
+          <div class="p-2 bg-slate-950/60 rounded-xl border border-slate-800 flex items-center gap-2">
+            <span class="text-cyan-400 font-bold">1. Seviye:</span> Asal Çekirdek & Merdiven
+          </div>
+          <div class="p-2 bg-slate-950/60 rounded-xl border border-slate-800 flex items-center gap-2">
+            <span class="text-purple-400 font-bold">2. Seviye:</span> EBOB mu EKOK mu Kararı
+          </div>
+          <div class="p-2 bg-slate-950/60 rounded-xl border border-slate-800 flex items-center gap-2">
+            <span class="text-amber-400 font-bold">3. Seviye:</span> LGS Yeni Nesil Çark Sistemi
+          </div>
+        </div>
+      </div>
+
+      <a href="sayi-avcisi/index.html" class="smart-btn w-full py-3.5 bg-gradient-to-r from-cyan-500 to-emerald-400 text-slate-950 font-orbitron font-extrabold text-base rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/25 hover:brightness-110">
+        <span>SAYI AVCISI OYNA</span>
         <span>➔</span>
       </a>
     </div>
 
     <!-- GAME 2: RENKLİ SIFRAMONLAR (Pastel Pink & Sky Blue) -->
-    <div class="relative bg-slate-900/90 rounded-3xl p-6 sm:p-8 flex flex-col justify-between glow-pink-card backdrop-blur-xl transition-all group overflow-hidden">
-      <div class="absolute top-0 right-0 w-32 h-32 bg-pink-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="relative bg-slate-900/95 rounded-3xl p-6 flex flex-col justify-between glow-pink-card backdrop-blur-xl transition-all group overflow-hidden">
+      <div class="absolute top-0 right-0 w-28 h-28 bg-pink-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
       <div>
-        <!-- Badge -->
-        <div class="flex items-center justify-between mb-4">
-          <span class="px-3.5 py-1 bg-pink-950/80 text-pink-300 text-xs font-fredoka font-bold rounded-xl border border-pink-500/40">
-            RENKLİ CANAVARLAR TEMASI
+        <div class="flex items-center justify-between mb-3">
+          <span class="px-3 py-1 bg-pink-950 text-pink-300 text-xs font-fredoka font-bold rounded-xl border border-pink-500/40">
+            RENKLİ CANAVARLAR
           </span>
-          <span class="text-3xl">👾</span>
+          <span class="text-2xl">👾</span>
         </div>
 
-        <!-- Title -->
-        <h2 class="text-2xl sm:text-3xl font-extrabold font-fredoka text-white mb-2 tracking-wide group-hover:text-pink-400 transition-colors">
-          RENKLİ SIFRAMONLAR
+        <h2 class="text-xl sm:text-2xl font-extrabold font-fredoka text-white mb-2 tracking-wide group-hover:text-pink-400 transition-colors">
+          SIFRAMONLAR
         </h2>
-        <p class="text-slate-300 text-sm leading-relaxed mb-6 font-medium">
-          Sevimli canavarlara asal şekerler yedir, çilekli ve yaban mersinli kurabiyeleri en büyük kutulara paylaştır ve baloncuk zıplayışında ortak noktayı yakala!
+        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
+          Canavarları asal şekerlerle besle, kurabiyeleri en büyük kutulara paylaştır ve baloncuk zıplayışını yakala!
         </p>
 
-        <!-- Feature List -->
-        <div class="space-y-2 mb-8 text-xs sm:text-sm text-slate-300 font-medium">
-          <div class="flex items-center gap-2 p-2 bg-slate-950/60 rounded-xl border border-slate-800">
-            <span class="text-pink-400 font-bold">1. Seviye:</span>
-            <span>Asal Şeker Canavarı (Prime Factor)</span>
+        <div class="space-y-1.5 mb-6 text-xs text-slate-300 font-medium">
+          <div class="p-2 bg-slate-950/60 rounded-xl border border-slate-800 flex items-center gap-2">
+            <span class="text-pink-400 font-bold">1. Seviye:</span> Asal Şeker Canavarı
           </div>
-          <div class="flex items-center gap-2 p-2 bg-slate-950/60 rounded-xl border border-slate-800">
-            <span class="text-sky-400 font-bold">2. Seviye:</span>
-            <span>Kurabiye Kutulama (EBOB)</span>
+          <div class="p-2 bg-slate-950/60 rounded-xl border border-slate-800 flex items-center gap-2">
+            <span class="text-sky-400 font-bold">2. Seviye:</span> Kurabiye Kutulama (EBOB)
           </div>
-          <div class="flex items-center gap-2 p-2 bg-slate-950/60 rounded-xl border border-slate-800">
-            <span class="text-yellow-400 font-bold">3. Seviye:</span>
-            <span>Baloncuk Zıplayışı (EKOK)</span>
+          <div class="p-2 bg-slate-950/60 rounded-xl border border-slate-800 flex items-center gap-2">
+            <span class="text-yellow-400 font-bold">3. Seviye:</span> Baloncuk Zıplayışı (EKOK)
           </div>
         </div>
       </div>
 
-      <!-- Play Button -->
-      <a href="siframonlar/index.html" class="smart-btn w-full py-4 bg-gradient-to-r from-pink-500 via-rose-400 to-sky-400 text-slate-950 font-fredoka font-black text-base sm:text-lg rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-pink-500/25 hover:brightness-110">
-        <span>SIFRAMONLAR'I OYNA</span>
+      <a href="siframonlar/index.html" class="smart-btn w-full py-3.5 bg-gradient-to-r from-pink-500 via-rose-400 to-sky-400 text-slate-950 font-fredoka font-extrabold text-base rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-pink-500/25 hover:brightness-110">
+        <span>SIFRAMONLAR OYNA</span>
         <span>➔</span>
       </a>
     </div>
@@ -167,7 +203,7 @@
   </main>
 
   <!-- Footer -->
-  <footer class="max-w-5xl mx-auto w-full text-center pt-6 pb-2 text-xs text-slate-500">
+  <footer class="max-w-6xl mx-auto w-full text-center pt-6 pb-2 text-xs text-slate-500">
     <p>8. Sınıf LGS Matematik Eğitsel Oyun Portalı • Akıllı Tahta, Tablet ve Mobil Uyumlu</p>
   </footer>
 
