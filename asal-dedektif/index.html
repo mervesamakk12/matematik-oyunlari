@@ -10,22 +10,50 @@
   
   <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="css/styles.css">
-</head>
-<body class="flex flex-col justify-between selection:bg-emerald-500 selection:text-slate-950">
   
+  <style>
+    .math-bg-symbol {
+      position: absolute;
+      pointer-events: none;
+      user-select: none;
+      font-family: 'JetBrains Mono', serif;
+      font-weight: 800;
+      opacity: 0.1;
+      animation: float-symbol 22s infinite linear;
+    }
+
+    @keyframes float-symbol {
+      0% { transform: translateY(0px) rotate(0deg) scale(1); opacity: 0.07; }
+      50% { transform: translateY(-25px) rotate(12deg) scale(1.1); opacity: 0.16; }
+      100% { transform: translateY(0px) rotate(0deg) scale(1); opacity: 0.07; }
+    }
+  </style>
+</head>
+<body class="flex flex-col justify-between selection:bg-emerald-500 selection:text-slate-950 relative overflow-x-hidden">
+  
+  <!-- FLOATING MATHEMATICS SYMBOLS BACKGROUND -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <span class="math-bg-symbol text-emerald-400 text-6xl top-[12%] left-[4%]">√x</span>
+    <span class="math-bg-symbol text-cyan-400 text-7xl top-[20%] right-[7%]" style="animation-delay: 2s;">π</span>
+    <span class="math-bg-symbol text-amber-400 text-6xl top-[60%] left-[6%]" style="animation-delay: 4s;">∑</span>
+    <span class="math-bg-symbol text-purple-400 text-8xl top-[70%] right-[10%]" style="animation-delay: 1s;">∞</span>
+    <span class="math-bg-symbol text-rose-400 text-6xl top-[40%] left-[3%]" style="animation-delay: 3s;">×</span>
+    <span class="math-bg-symbol text-emerald-300 text-5xl top-[85%] left-[45%]" style="animation-delay: 2.5s;">EBOB</span>
+    <span class="math-bg-symbol text-yellow-400 text-5xl top-[30%] right-[35%]" style="animation-delay: 3.5s;">EKOK</span>
+    <span class="math-bg-symbol text-teal-400 text-6xl top-[5%] right-[20%]" style="animation-delay: 5s;">≠</span>
+  </div>
+
   <!-- Confetti Canvas -->
   <canvas id="confetti-canvas"></canvas>
 
-  <!-- TOP HUD BAR -->
-  <header class="relative z-20 w-full bg-slate-900/90 border-b border-slate-800 backdrop-blur-md px-4 py-3 sticky top-0 shadow-lg shadow-black/40">
+  <!-- TOP HUD BAR WITH LOGO -->
+  <header class="relative z-20 w-full bg-slate-900/90 border-b border-slate-800 backdrop-blur-md px-4 py-2.5 sticky top-0 shadow-lg shadow-black/40">
     <div class="max-w-5xl mx-auto flex items-center justify-between gap-2 sm:gap-4 flex-wrap">
       
       <!-- Logo & Home Navigation -->
       <div class="flex items-center gap-2 sm:gap-3 cursor-pointer" onclick="window.game.showScreen('menu')">
-        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-emerald-500 via-cyan-400 to-amber-400 p-0.5 shadow-md flex items-center justify-center">
-          <div class="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center text-xl">
-            🔍
-          </div>
+        <div class="w-11 h-11 rounded-xl overflow-hidden bg-slate-950 p-0.5 border border-emerald-400/60 shadow-md flex items-center justify-center">
+          <img src="assets/logo.png" alt="Logo" class="w-full h-full object-contain" onerror="this.src='../assets/logo.png'">
         </div>
         <div>
           <h1 class="font-fredoka font-extrabold text-base sm:text-lg tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-cyan-300 to-amber-300">
@@ -80,12 +108,9 @@
   <!-- MAIN VIEWPORT CONTAINER -->
   <main class="relative z-10 flex-1 max-w-5xl w-full mx-auto p-3 sm:p-6 flex flex-col justify-center">
 
-    <!-- ============================================== -->
-    <!-- SCREEN: MAIN MENU / MISSION SELECT             -->
-    <!-- ============================================== -->
+    <!-- SCREEN: MAIN MENU -->
     <section id="screen-menu" class="w-full flex flex-col items-center justify-center py-4 animate-fadeIn">
       
-      <!-- Hero Header -->
       <div class="text-center mb-6">
         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-950/70 border border-emerald-500/40 text-emerald-300 text-xs sm:text-sm font-semibold mb-3">
           <span>🔎 8. SINIF KADEMELİ MATEMATİK DEDEKTİFİ</span>
@@ -101,10 +126,8 @@
         </p>
       </div>
 
-      <!-- 4 Graded Level Cards Grid -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-5xl mb-6">
         
-        <!-- Level 1 Card -->
         <div class="mystery-card mystery-card-emerald p-5 flex flex-col justify-between hover:scale-102 transition-transform">
           <div>
             <div class="flex items-center justify-between mb-3">
@@ -122,7 +145,6 @@
           </button>
         </div>
 
-        <!-- Level 2 Card -->
         <div class="mystery-card mystery-card-amber p-5 flex flex-col justify-between hover:scale-102 transition-transform">
           <div>
             <div class="flex items-center justify-between mb-3">
@@ -140,7 +162,6 @@
           </button>
         </div>
 
-        <!-- Level 3 Card -->
         <div class="mystery-card mystery-card-purple p-5 flex flex-col justify-between hover:scale-102 transition-transform">
           <div>
             <div class="flex items-center justify-between mb-3">
@@ -158,7 +179,6 @@
           </button>
         </div>
 
-        <!-- Level 4 Card -->
         <div class="mystery-card p-5 flex flex-col justify-between border-cyan-500/40 hover:scale-102 transition-transform">
           <div>
             <div class="flex items-center justify-between mb-3">
@@ -178,7 +198,6 @@
 
       </div>
 
-      <!-- Review Report Button -->
       <button onclick="window.game.showErrorReview()" class="smart-btn px-6 py-3 bg-slate-900 border border-slate-700 hover:border-emerald-400 text-slate-300 hover:text-white rounded-xl text-xs sm:text-sm font-mono-math flex items-center gap-2">
         <span>📖</span>
         <span>HATA ANALİZİ VE DEDEKTİF RAPORU</span>
@@ -186,11 +205,8 @@
 
     </section>
 
-    <!-- ============================================== -->
-    <!-- SCREEN: LEVEL 1 (GÖKKUŞAĞI ÇARPAN AVCISI)      -->
-    <!-- ============================================== -->
+    <!-- SCREEN: LEVEL 1 -->
     <section id="screen-level1" class="w-full hidden animate-fadeIn">
-      
       <div class="mb-4">
         <div class="flex items-center justify-between mb-1.5">
           <span id="l1-q-counter" class="text-sm font-fredoka text-emerald-400 font-bold">Hedef 1</span>
@@ -211,24 +227,17 @@
           Aşağıdaki eksik çarpan kutucuklarını tamamlamak için doğru sayıları seç:
         </p>
 
-        <!-- Rainbow Factor Arc Slots -->
         <div id="l1-rainbow-slots" class="flex flex-wrap gap-2 sm:gap-3 justify-center items-center mb-6">
-          <!-- Dynamically populated slots -->
         </div>
 
-        <!-- Rainbow Pairs Live Box -->
         <div id="l1-pairs-box" class="flex flex-wrap gap-2 justify-center items-center p-3 bg-slate-950/60 rounded-2xl border border-slate-800 mb-6">
-          <!-- Dynamically populated pairs -->
         </div>
 
-        <!-- Options Container -->
         <div class="pt-4 border-t border-slate-800">
           <h4 class="text-xs sm:text-sm font-mono-math text-slate-400 mb-3">EKSİK ÇARPANLARI SEÇ:</h4>
           <div id="l1-options-container" class="grid grid-cols-3 sm:grid-cols-6 gap-2 sm:gap-3 max-w-xl mx-auto">
-            <!-- Dynamically populated choices -->
           </div>
         </div>
-
       </div>
 
       <div class="text-center">
@@ -238,11 +247,8 @@
       </div>
     </section>
 
-    <!-- ============================================== -->
-    <!-- SCREEN: LEVEL 2 (ASAL KALKAN & TUZAKLAR)       -->
-    <!-- ============================================== -->
+    <!-- SCREEN: LEVEL 2 -->
     <section id="screen-level2" class="w-full hidden animate-fadeIn">
-      
       <div class="mb-4">
         <div class="flex items-center justify-between mb-1.5">
           <span id="l2-q-counter" class="text-sm font-fredoka text-amber-400 font-bold">Dedektif 1</span>
@@ -254,7 +260,6 @@
       </div>
 
       <div class="mystery-card mystery-card-amber p-6 sm:p-8 mb-4 text-center max-w-2xl mx-auto">
-        
         <span class="text-xs text-amber-400 uppercase tracking-widest font-mono-math block mb-2">ŞÜPHELİ SAYI İNCELENİYOR</span>
         
         <div class="inline-flex items-center justify-center w-32 h-32 sm:w-40 sm:h-40 rounded-3xl bg-slate-950 border-4 border-amber-400/80 shadow-2xl mb-5">
@@ -269,7 +274,6 @@
           Bu sayı bir <b>ASAL SAYI</b> mıdır?
         </h4>
 
-        <!-- 2 Decision Buttons -->
         <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
           <button id="l2-btn-prime" class="smart-btn flex-1 py-4 px-6 rounded-2xl bg-emerald-950/80 border-2 border-emerald-500 hover:border-emerald-400 text-emerald-300 font-fredoka font-bold text-xl sm:text-2xl shadow-lg">
             ✅ ASALDIR
@@ -278,7 +282,6 @@
             ❌ ASAL DEĞİLDİR
           </button>
         </div>
-
       </div>
 
       <div class="text-center">
@@ -288,11 +291,8 @@
       </div>
     </section>
 
-    <!-- ============================================== -->
-    <!-- SCREEN: LEVEL 3 (ARALARINDA ASAL DEDEKTİFİ)    -->
-    <!-- ============================================== -->
+    <!-- SCREEN: LEVEL 3 -->
     <section id="screen-level3" class="w-full hidden animate-fadeIn">
-      
       <div class="mb-4">
         <div class="flex items-center justify-between mb-1.5">
           <span id="l3-q-counter" class="text-sm font-fredoka text-purple-400 font-bold">İkili 1</span>
@@ -304,12 +304,10 @@
       </div>
 
       <div class="mystery-card mystery-card-purple p-6 sm:p-8 mb-4 text-center max-w-2xl mx-auto">
-        
         <span id="l3-pair-badge" class="inline-block px-3 py-1 bg-purple-950 text-purple-300 text-xs font-mono-math font-bold rounded-full border border-purple-500/40 mb-4">
           Ardışık Sayılar Kuralı
         </span>
 
-        <!-- Number Pair Display -->
         <div class="flex items-center justify-center gap-4 sm:gap-6 mb-6">
           <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-slate-950 border-3 border-purple-400 flex items-center justify-center shadow-lg">
             <span id="l3-num1" class="text-4xl sm:text-5xl font-black font-mono-math text-purple-300">8</span>
@@ -326,7 +324,6 @@
           Bu iki sayı <b>ARALARINDA ASAL</b> mıdır? (EBOB = 1 mi?)
         </h4>
 
-        <!-- Decision Buttons -->
         <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
           <button id="l3-btn-yes" class="smart-btn flex-1 py-4 px-6 rounded-2xl bg-emerald-950/80 border-2 border-emerald-500 hover:border-emerald-400 text-emerald-300 font-fredoka font-bold text-xl sm:text-2xl shadow-lg">
             👍 EVET (Aralarında Asal)
@@ -335,7 +332,6 @@
             👎 HAYIR
           </button>
         </div>
-
       </div>
 
       <div class="text-center">
@@ -345,11 +341,8 @@
       </div>
     </section>
 
-    <!-- ============================================== -->
-    <!-- SCREEN: LEVEL 4 (LGS ŞAMPİYONLUK MEYDAN OKUMASI)-->
-    <!-- ============================================== -->
+    <!-- SCREEN: LEVEL 4 -->
     <section id="screen-level4" class="w-full hidden animate-fadeIn">
-      
       <div class="mb-4">
         <div class="flex items-center justify-between mb-1.5">
           <span id="l4-q-counter" class="text-sm font-fredoka text-cyan-400 font-bold">LGS Görev 1</span>
@@ -361,12 +354,10 @@
       </div>
 
       <div class="mystery-card p-6 sm:p-8 mb-4 border-cyan-500/40">
-        
         <p id="l4-story-text" class="text-slate-200 text-base sm:text-lg font-medium leading-relaxed mb-6">
           Soru yükleniyor...
         </p>
 
-        <!-- Hint Section -->
         <div class="flex items-center justify-between gap-3 mb-4 flex-wrap">
           <button id="l4-hint-btn" class="smart-btn px-4 py-2 bg-amber-950/70 border border-amber-500/50 hover:border-amber-400 text-amber-300 rounded-xl text-xs sm:text-sm font-mono-math font-bold">
             💡 İPUCU AL
@@ -376,16 +367,13 @@
 
         <div id="l4-hints-box" class="hidden mb-4"></div>
 
-        <!-- Options Container -->
         <div class="pt-4 border-t border-slate-800">
           <h4 class="text-xs sm:text-sm font-mono-math text-slate-400 mb-3 text-center">
             DOĞRU CEVABI SEÇİN:
           </h4>
           <div id="l4-options-container" class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-xl mx-auto">
-            <!-- Dynamically populated options -->
           </div>
         </div>
-
       </div>
 
       <div class="text-center">
@@ -395,22 +383,17 @@
       </div>
     </section>
 
-    <!-- ============================================== -->
-    <!-- SCREEN: SUMMARY MODAL                          -->
-    <!-- ============================================== -->
+    <!-- SCREEN: SUMMARY -->
     <section id="screen-summary" class="w-full hidden animate-fadeIn flex items-center justify-center py-6">
       <div class="mystery-card p-6 sm:p-8 max-w-md w-full text-center border-amber-500/40 shadow-2xl">
-        
         <h2 id="summary-level-title" class="text-2xl sm:text-3xl font-extrabold font-fredoka text-amber-400 mb-2">
           SEVİYE TAMAMLANDI! 🏆
         </h2>
         <p class="text-slate-400 text-xs sm:text-sm font-mono-math mb-5">Dedektiflik rozetiniz güncellendi.</p>
 
-        <!-- Stars Showcase -->
         <div id="summary-stars-container" class="flex items-center justify-center gap-3 mb-6">
         </div>
 
-        <!-- Stats Breakdown -->
         <div class="grid grid-cols-3 gap-2 p-3 bg-slate-950/80 rounded-2xl mb-6 font-mono-math text-xs border border-slate-800">
           <div>
             <span class="text-[10px] text-slate-500 block">TOPLAM PUAN</span>
@@ -426,7 +409,6 @@
           </div>
         </div>
 
-        <!-- Action Buttons -->
         <div class="flex flex-col gap-3">
           <button id="summary-next-btn" class="smart-btn w-full py-4 bg-gradient-to-r from-emerald-500 to-cyan-400 text-slate-950 font-fredoka font-bold text-base rounded-2xl shadow-lg">
             SONRAKİ SEVİYEYE GEÇ ➔
@@ -440,15 +422,11 @@
             ANA MENÜYE DÖN
           </button>
         </div>
-
       </div>
     </section>
 
-    <!-- ============================================== -->
-    <!-- SCREEN: ERROR REVIEW & LEARNING REPORT         -->
-    <!-- ============================================== -->
+    <!-- SCREEN: ERROR REVIEW -->
     <section id="screen-review" class="w-full hidden animate-fadeIn">
-      
       <div class="flex items-center justify-between mb-5 flex-wrap gap-2">
         <div>
           <h2 class="text-2xl sm:text-3xl font-extrabold font-fredoka text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-amber-300 to-emerald-300">
@@ -473,7 +451,6 @@
       </div>
 
       <div id="review-cards-list" class="space-y-3">
-        <!-- Dynamically injected feedback cards -->
       </div>
 
       <div class="mt-6 text-center">
@@ -481,19 +458,16 @@
           ANA MENÜYE DÖN
         </button>
       </div>
-
     </section>
 
   </main>
 
-  <!-- FOOTER -->
   <footer class="relative z-10 w-full bg-slate-950/80 border-t border-slate-800/60 py-3 px-4 text-center">
     <p class="text-xs text-slate-500 font-mono-math">
       Asal Dedektif • 8. Sınıf Matematik Çarpanlar ve Katlar Kademeli Oyun • Akıllı Tahta & Mobil Uyumlu
     </p>
   </footer>
 
-  <!-- Scripts -->
   <script src="js/audio.js"></script>
   <script src="js/data.js"></script>
   <script src="js/game.js"></script>

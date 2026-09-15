@@ -11,7 +11,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700;800&family=Orbitron:wght@700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700;800&family=Orbitron:wght@700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -20,38 +20,58 @@
     }
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #0f172a 50%, #030712 100%);
+      background: linear-gradient(135deg, #090d1a 0%, #1e1035 35%, #0d1b2a 70%, #061e1a 100%);
       min-height: 100vh;
       color: #f8fafc;
       overflow-x: hidden;
+      position: relative;
     }
+    
     .font-orbitron { font-family: 'Orbitron', sans-serif; }
     .font-fredoka { font-family: 'Fredoka', cursive, sans-serif; }
+    .font-math { font-family: 'JetBrains Mono', monospace; }
+
+    /* Animated Math Symbols Background */
+    .math-bg-symbol {
+      position: absolute;
+      pointer-events: none;
+      user-select: none;
+      font-family: 'JetBrains Mono', serif;
+      font-weight: 800;
+      opacity: 0.12;
+      animation: float-symbol 20s infinite linear;
+    }
+
+    @keyframes float-symbol {
+      0% { transform: translateY(0px) rotate(0deg) scale(1); opacity: 0.08; }
+      50% { transform: translateY(-30px) rotate(15deg) scale(1.15); opacity: 0.2; }
+      100% { transform: translateY(0px) rotate(0deg) scale(1); opacity: 0.08; }
+    }
     
     .glow-cyan-card {
-      box-shadow: 0 10px 40px -10px rgba(0, 240, 255, 0.25), 0 0 20px rgba(0, 240, 255, 0.1);
-      border: 2px solid rgba(0, 240, 255, 0.35);
+      box-shadow: 0 10px 40px -10px rgba(0, 240, 255, 0.35), 0 0 25px rgba(0, 240, 255, 0.15);
+      border: 2px solid rgba(0, 240, 255, 0.4);
     }
     .glow-cyan-card:hover {
-      box-shadow: 0 15px 50px -5px rgba(0, 240, 255, 0.45), 0 0 30px rgba(0, 240, 255, 0.25);
+      box-shadow: 0 15px 50px -5px rgba(0, 240, 255, 0.55), 0 0 35px rgba(0, 240, 255, 0.3);
       border-color: #00f0ff;
     }
 
     .glow-pink-card {
-      box-shadow: 0 10px 40px -10px rgba(236, 72, 153, 0.3), 0 0 20px rgba(236, 72, 153, 0.15);
-      border: 2px solid rgba(244, 114, 182, 0.4);
+      box-shadow: 0 10px 40px -10px rgba(236, 72, 153, 0.35), 0 0 25px rgba(236, 72, 153, 0.15);
+      border: 2px solid rgba(244, 114, 182, 0.45);
     }
     .glow-pink-card:hover {
-      box-shadow: 0 15px 50px -5px rgba(236, 72, 153, 0.5), 0 0 30px rgba(236, 72, 153, 0.3);
+      box-shadow: 0 15px 50px -5px rgba(236, 72, 153, 0.55), 0 0 35px rgba(236, 72, 153, 0.3);
       border-color: #ec4899;
     }
 
     .glow-emerald-card {
-      box-shadow: 0 10px 40px -10px rgba(16, 185, 129, 0.3), 0 0 20px rgba(16, 185, 129, 0.15);
-      border: 2px solid rgba(16, 185, 129, 0.4);
+      box-shadow: 0 10px 40px -10px rgba(16, 185, 129, 0.35), 0 0 25px rgba(16, 185, 129, 0.15);
+      border: 2px solid rgba(16, 185, 129, 0.45);
     }
     .glow-emerald-card:hover {
-      box-shadow: 0 15px 50px -5px rgba(16, 185, 129, 0.5), 0 0 30px rgba(16, 185, 129, 0.3);
+      box-shadow: 0 15px 50px -5px rgba(16, 185, 129, 0.55), 0 0 35px rgba(16, 185, 129, 0.3);
       border-color: #10b981;
     }
 
@@ -63,33 +83,77 @@
     .smart-btn:active {
       transform: scale(0.96);
     }
+
+    /* Logo Glow */
+    .logo-glow {
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.5), 0 0 40px rgba(6, 182, 212, 0.3);
+    }
   </style>
 </head>
 <body class="flex flex-col justify-between p-4 sm:p-6 min-h-screen">
   
-  <!-- Header -->
-  <header class="max-w-6xl mx-auto w-full text-center pt-2 pb-6">
-    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 text-slate-300 text-xs sm:text-sm font-semibold mb-3 shadow-lg">
-      <span>✨ 8. SINIF LGS MATEMATİK EĞİTİM MERKEZİ</span>
+  <!-- FLOATING MATHEMATICS SYMBOLS BACKGROUND -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <span class="math-bg-symbol text-cyan-400 text-6xl top-[10%] left-[5%]">π</span>
+    <span class="math-bg-symbol text-pink-400 text-7xl top-[25%] right-[8%]" style="animation-delay: 2s;">∑</span>
+    <span class="math-bg-symbol text-emerald-400 text-6xl top-[65%] left-[8%]" style="animation-delay: 4s;">√x</span>
+    <span class="math-bg-symbol text-amber-400 text-8xl top-[75%] right-[12%]" style="animation-delay: 1s;">∞</span>
+    <span class="math-bg-symbol text-purple-400 text-6xl top-[45%] left-[4%] style="animation-delay: 3s;">÷</span>
+    <span class="math-bg-symbol text-rose-400 text-7xl top-[15%] right-[30%]" style="animation-delay: 5s;">×</span>
+    <span class="math-bg-symbol text-sky-400 text-5xl top-[85%] left-[40%]" style="animation-delay: 2.5s;">EBOB</span>
+    <span class="math-bg-symbol text-yellow-300 text-5xl top-[35%] right-[45%]" style="animation-delay: 3.5s;">EKOK</span>
+    <span class="math-bg-symbol text-indigo-400 text-7xl top-[50%] right-[3%]" style="animation-delay: 6s;">∫</span>
+    <span class="math-bg-symbol text-teal-300 text-6xl top-[5%] right-[15%]" style="animation-delay: 4.5s;">≠</span>
+    <span class="math-bg-symbol text-pink-500 text-5xl top-[80%] left-[20%]" style="animation-delay: 1.5s;">x²</span>
+  </div>
+
+  <!-- Header with Corner Logo -->
+  <header class="relative z-10 max-w-6xl mx-auto w-full pt-2 pb-6">
+    <div class="flex items-center justify-between gap-4 flex-wrap mb-4">
+      
+      <!-- Top Corner Logo -->
+      <div class="flex items-center gap-3 bg-slate-900/90 border border-emerald-500/40 p-1.5 pr-4 rounded-2xl shadow-xl backdrop-blur-md">
+        <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl overflow-hidden bg-slate-950 p-0.5 border border-emerald-400/60 logo-glow flex items-center justify-center">
+          <img src="assets/logo.png" alt="Matematik Logo" class="w-full h-full object-contain" onerror="this.src='assets/logo2.png'">
+        </div>
+        <div>
+          <span class="font-fredoka font-extrabold text-sm sm:text-base text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-cyan-300 to-amber-300 block">
+            MATEMATİK KULÜBÜ
+          </span>
+          <span class="text-[10px] sm:text-xs text-slate-400 font-bold font-math block -mt-0.5">
+            8. SINIF LGS AKADEMİSİ
+          </span>
+        </div>
+      </div>
+
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/80 border border-slate-700 text-slate-200 text-xs sm:text-sm font-semibold shadow-lg">
+        <span class="animate-pulse">✨</span>
+        <span>EĞLENCELİ MATEMATİK DÜNYASI</span>
+      </div>
+
     </div>
-    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-cyan-400 to-pink-400 mb-2">
-      MATEMATİK OYUNLARI PORTALI
-    </h1>
-    <p class="text-slate-400 max-w-2xl mx-auto text-xs sm:text-base">
-      Her seviyeye uygun kademeli oyunlar: Çarpanlar ve Katlar, Asal Sayılar, EBOB & EKOK ve LGS Yeni Nesil soruları keşfet!
-    </p>
+
+    <div class="text-center mt-2">
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-cyan-400 to-pink-400 mb-2 drop-shadow-md">
+        MATEMATİK OYUNLARI PORTALI
+      </h1>
+      <p class="text-slate-300 max-w-2xl mx-auto text-xs sm:text-base font-medium">
+        Kademeli eğitsel oyunlar: Çarpanlar ve Katlar, Asal Sayılar, EBOB & EKOK ve LGS Yeni Nesil soruları keşfet!
+      </p>
+    </div>
   </header>
 
   <!-- 3 Game Cards Grid -->
-  <main class="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-3 gap-5 my-auto items-stretch">
+  <main class="relative z-10 max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-3 gap-5 my-auto items-stretch">
     
     <!-- GAME 3: ASAL DEDEKTİF (Kademeli Öğrenme & Çarpanlar - Öne Çıkan Yeni Oyun) -->
-    <div class="relative bg-slate-900/95 rounded-3xl p-6 flex flex-col justify-between glow-emerald-card backdrop-blur-xl transition-all group overflow-hidden">
-      <div class="absolute top-0 right-0 w-28 h-28 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="relative bg-slate-900/90 rounded-3xl p-6 flex flex-col justify-between glow-emerald-card backdrop-blur-xl transition-all group overflow-hidden">
+      <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none"></div>
 
       <div>
         <div class="flex items-center justify-between mb-3">
-          <span class="px-3 py-1 bg-emerald-950 text-emerald-300 text-xs font-fredoka font-bold rounded-xl border border-emerald-500/40">
+          <span class="px-3 py-1 bg-emerald-950 text-emerald-300 text-xs font-fredoka font-bold rounded-xl border border-emerald-500/40 shadow">
             KADEMELİ DEDEKTİF
           </span>
           <span class="text-2xl">🔎</span>
@@ -103,16 +167,16 @@
         </p>
 
         <div class="space-y-1.5 mb-6 text-xs text-slate-300 font-medium">
-          <div class="p-2 bg-slate-950/60 rounded-xl border border-slate-800 flex items-center gap-2">
+          <div class="p-2 bg-slate-950/70 rounded-xl border border-slate-800 flex items-center gap-2">
             <span class="text-emerald-400 font-bold">1. Seviye:</span> Gökkuşağı Çarpan Avcısı
           </div>
-          <div class="p-2 bg-slate-950/60 rounded-xl border border-slate-800 flex items-center gap-2">
+          <div class="p-2 bg-slate-950/70 rounded-xl border border-slate-800 flex items-center gap-2">
             <span class="text-amber-400 font-bold">2. Seviye:</span> Asal Kalkan & 91 Tuzağı
           </div>
-          <div class="p-2 bg-slate-950/60 rounded-xl border border-slate-800 flex items-center gap-2">
+          <div class="p-2 bg-slate-950/70 rounded-xl border border-slate-800 flex items-center gap-2">
             <span class="text-purple-400 font-bold">3. Seviye:</span> Aralarında Asallık Testi
           </div>
-          <div class="p-2 bg-slate-950/60 rounded-xl border border-slate-800 flex items-center gap-2">
+          <div class="p-2 bg-slate-950/70 rounded-xl border border-slate-800 flex items-center gap-2">
             <span class="text-cyan-400 font-bold">4. Seviye:</span> LGS Şampiyonluk Görevleri
           </div>
         </div>
@@ -125,12 +189,12 @@
     </div>
 
     <!-- GAME 1: SAYI AVCISI (Cyberpunk / Dark Space) -->
-    <div class="relative bg-slate-900/95 rounded-3xl p-6 flex flex-col justify-between glow-cyan-card backdrop-blur-xl transition-all group overflow-hidden">
-      <div class="absolute top-0 right-0 w-28 h-28 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="relative bg-slate-900/90 rounded-3xl p-6 flex flex-col justify-between glow-cyan-card backdrop-blur-xl transition-all group overflow-hidden">
+      <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none"></div>
 
       <div>
         <div class="flex items-center justify-between mb-3">
-          <span class="px-3 py-1 bg-cyan-950 text-cyan-300 text-xs font-orbitron font-bold rounded-xl border border-cyan-500/40">
+          <span class="px-3 py-1 bg-cyan-950 text-cyan-300 text-xs font-orbitron font-bold rounded-xl border border-cyan-500/40 shadow">
             SİBER UZAY
           </span>
           <span class="text-2xl">🚀</span>
@@ -144,13 +208,13 @@
         </p>
 
         <div class="space-y-1.5 mb-6 text-xs text-slate-300 font-medium">
-          <div class="p-2 bg-slate-950/60 rounded-xl border border-slate-800 flex items-center gap-2">
+          <div class="p-2 bg-slate-950/70 rounded-xl border border-slate-800 flex items-center gap-2">
             <span class="text-cyan-400 font-bold">1. Seviye:</span> Asal Çekirdek & Merdiven
           </div>
-          <div class="p-2 bg-slate-950/60 rounded-xl border border-slate-800 flex items-center gap-2">
+          <div class="p-2 bg-slate-950/70 rounded-xl border border-slate-800 flex items-center gap-2">
             <span class="text-purple-400 font-bold">2. Seviye:</span> EBOB mu EKOK mu Kararı
           </div>
-          <div class="p-2 bg-slate-950/60 rounded-xl border border-slate-800 flex items-center gap-2">
+          <div class="p-2 bg-slate-950/70 rounded-xl border border-slate-800 flex items-center gap-2">
             <span class="text-amber-400 font-bold">3. Seviye:</span> LGS Yeni Nesil Çark Sistemi
           </div>
         </div>
@@ -163,12 +227,12 @@
     </div>
 
     <!-- GAME 2: RENKLİ SIFRAMONLAR (Pastel Pink & Sky Blue) -->
-    <div class="relative bg-slate-900/95 rounded-3xl p-6 flex flex-col justify-between glow-pink-card backdrop-blur-xl transition-all group overflow-hidden">
-      <div class="absolute top-0 right-0 w-28 h-28 bg-pink-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="relative bg-slate-900/90 rounded-3xl p-6 flex flex-col justify-between glow-pink-card backdrop-blur-xl transition-all group overflow-hidden">
+      <div class="absolute top-0 right-0 w-32 h-32 bg-pink-500/15 rounded-full blur-3xl pointer-events-none"></div>
 
       <div>
         <div class="flex items-center justify-between mb-3">
-          <span class="px-3 py-1 bg-pink-950 text-pink-300 text-xs font-fredoka font-bold rounded-xl border border-pink-500/40">
+          <span class="px-3 py-1 bg-pink-950 text-pink-300 text-xs font-fredoka font-bold rounded-xl border border-pink-500/40 shadow">
             RENKLİ CANAVARLAR
           </span>
           <span class="text-2xl">👾</span>
@@ -182,13 +246,13 @@
         </p>
 
         <div class="space-y-1.5 mb-6 text-xs text-slate-300 font-medium">
-          <div class="p-2 bg-slate-950/60 rounded-xl border border-slate-800 flex items-center gap-2">
+          <div class="p-2 bg-slate-950/70 rounded-xl border border-slate-800 flex items-center gap-2">
             <span class="text-pink-400 font-bold">1. Seviye:</span> Asal Şeker Canavarı
           </div>
-          <div class="p-2 bg-slate-950/60 rounded-xl border border-slate-800 flex items-center gap-2">
+          <div class="p-2 bg-slate-950/70 rounded-xl border border-slate-800 flex items-center gap-2">
             <span class="text-sky-400 font-bold">2. Seviye:</span> Kurabiye Kutulama (EBOB)
           </div>
-          <div class="p-2 bg-slate-950/60 rounded-xl border border-slate-800 flex items-center gap-2">
+          <div class="p-2 bg-slate-950/70 rounded-xl border border-slate-800 flex items-center gap-2">
             <span class="text-yellow-400 font-bold">3. Seviye:</span> Baloncuk Zıplayışı (EKOK)
           </div>
         </div>
@@ -203,7 +267,7 @@
   </main>
 
   <!-- Footer -->
-  <footer class="max-w-6xl mx-auto w-full text-center pt-6 pb-2 text-xs text-slate-500">
+  <footer class="relative z-10 max-w-6xl mx-auto w-full text-center pt-6 pb-2 text-xs text-slate-400 font-medium">
     <p>8. Sınıf LGS Matematik Eğitsel Oyun Portalı • Akıllı Tahta, Tablet ve Mobil Uyumlu</p>
   </footer>
 
